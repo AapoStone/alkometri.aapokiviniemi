@@ -23,7 +23,7 @@ const [answer,setAnswer] = useState(0);
 
     <div>
       <label>Bottles</label>
-      <select>
+      <select onChange={e => setBottles(e.target.value)}>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -54,7 +54,7 @@ const [answer,setAnswer] = useState(0);
 
     <div>
       <label>Time (h)</label>
-      <select>
+      <select onChange={e => setTime(e.target.value)}>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -84,8 +84,8 @@ const [answer,setAnswer] = useState(0);
 
     <div>
     <label>Gender</label>
-    <input type="radio" value="male" name="gender" defaultChecked /> Male
-    <input type="radio" value="female" name="gender" /> Female
+    <input type="radio" value="male" name="gender" defaultChecked onChange={e => setGender(e.target.value)}/> Male
+    <input type="radio" value="female" name="gender" onChange={e => setGender(e.target.value)}/> Female
     </div>
     <div className='answer'>
       <label>Answer</label>
