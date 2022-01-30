@@ -1,13 +1,13 @@
 import './App.css';
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 function App() {
 
 const [weight,setWeight] = useState(0);
 const [bottles,setBottles] = useState(0);
 const [time,setTime] = useState(0);
-
-
+const [gender,setGender] = useState(0);
+const [answer,setAnswer] = useState(0);
 
 
 
@@ -16,12 +16,9 @@ const [time,setTime] = useState(0);
     <h1>Calculating alcohol blood level</h1>
     
     <div>
-      <label>Weight</label>
+      <label>Weight (kg)</label>
 
-      <input 
-      type="number"
-      value="" 
-      />
+      <input type="number" value={weight} onChange={e => setWeight(e.target.value)}/>
     </div>
 
     <div>
@@ -56,7 +53,7 @@ const [time,setTime] = useState(0);
     </div>
 
     <div>
-      <label>Time</label>
+      <label>Time (h)</label>
       <select>
         <option value="1">1</option>
         <option value="2">2</option>
