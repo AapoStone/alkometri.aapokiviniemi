@@ -13,17 +13,20 @@ const [answer,setAnswer] = useState(0);
   function calculate(e){
   e.preventDefault();
 
-  let litres = bottles * 0.33;
-  let grams =  litres * 8 * 4.5;
-  let burning = weight / 10;
-  let gramsLeft = grams - (burning * time);
-  let answer = 0;
+  var litres = bottles * 0.33;
+  var grams =  litres * 8 * 4.5;
+  var burning = weight / 10;
+  var gramsLeft = grams-(burning * time);
+  var answer = 0;
 
-  if (gender === 'male') {
-    answer = grams / (weight * 0.7);
+  if (gender === "female") {
+    answer = gramsLeft/(weight * 0.6);
   }
-  else {
-    answer = grams / (weight * 0.6);
+  else{
+    answer = gramsLeft/(weight * 0.7);
+  }
+  if (answer < 0) {
+    answer = 0
   }
   setAnswer(answer);
 
@@ -44,6 +47,7 @@ const [answer,setAnswer] = useState(0);
     <div>
       <label>Bottles</label>
       <select onChange={e => setBottles(e.target.value)}>
+        <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -75,6 +79,7 @@ const [answer,setAnswer] = useState(0);
     <div>
       <label>Time (h)</label>
       <select onChange={e => setTime(e.target.value)}>
+        <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -104,8 +109,8 @@ const [answer,setAnswer] = useState(0);
 
     <div>
     <label>Gender</label>
-    <input type="radio" value="male" name="gender" defaultChecked onChange={e => setGender(e.target.value)}/> Male
-    <input type="radio" value="female" name="gender" onChange={e => setGender(e.target.value)}/> Female
+    <input type="radio" value="male" name='gender' defaultChecked onChange={e => setGender(e.target.value)}/> Male
+    <input type="radio" value="female" name='gender' onChange={e => setGender(e.target.value)}/> Female
     </div>
     <div className='answer'>
       <label>Answer</label>
