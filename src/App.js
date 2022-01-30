@@ -10,9 +10,29 @@ const [gender,setGender] = useState(0);
 const [answer,setAnswer] = useState(0);
 
 
+  function calculate(e){
+  e.preventDefault();
+
+  let litres = bottles * 0.33;
+  let grams =  litres * 8 * 4.5;
+  let burning = weight / 10;
+  let gramsLeft = grams - (burning * time);
+  let answer = 0;
+
+  if (gender === 'male') {
+    answer = grams / (weight * 0.7);
+  }
+  else {
+    answer = grams / (weight * 0.6);
+  }
+  setAnswer(answer);
+
+
+  }
+
 
   return (
-    <from>
+    <form onSubmit={calculate}>
     <h1>Calculating alcohol blood level</h1>
     
     <div>
@@ -89,12 +109,12 @@ const [answer,setAnswer] = useState(0);
     </div>
     <div className='answer'>
       <label>Answer</label>
-      <output> </output>
+      <output>{answer.toFixed(2)} </output>
     </div>
     <div className='button'>
     <button>Calculate</button>
     </div>
-    </from>
+    </form>
 
 
 
